@@ -37,6 +37,10 @@ spl_autoload_register(function($classPath) {
     error();
 });
 
+function &core() {
+    global $core;
+    return $core;
+}
 
 function error() {
     pre('Hay un error!', true);

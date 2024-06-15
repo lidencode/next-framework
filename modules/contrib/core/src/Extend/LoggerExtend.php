@@ -10,7 +10,10 @@ class LoggerExtend {
     }
 
     public function log($message, $type = TYPE_INFO, $output = OUTPUT_SCREEN) {
+        $debug = core()->config->get('environment')['debug']['enabled'];
+
         if (!$type) $type = TYPE_INFO;
+        if ($type == TYPE_DEBUG && !$debug) return;
 
         if ($output == OUTPUT_ALL || $output == OUTPUT_SCREEN) {
             var_dump($message);

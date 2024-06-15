@@ -31,4 +31,12 @@ class ConfigExtend {
             }
         }
     }
+
+    public function get($key) {
+        if (isset($this->values[$key])) {
+            return $this->values[$key];
+        } else {
+            return null;
+        }
+    }
 }
