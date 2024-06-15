@@ -19,6 +19,10 @@ class ConfigExtend {
                 if (isset($data['environment']) && isset($data['environment']['hosts'])) {
                     foreach ($data['environment']['hosts'] as $key => $host) {
                         if ($host == $actualHost) {
+                            /* set environment const */
+                            $environment = trim(str_replace('.yaml', '', $configFile));
+                            define('APP_ENV', $environment);
+
                             /* Load config and exit foreach */
                             $this->values = $data;
                         }
