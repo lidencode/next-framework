@@ -11,6 +11,19 @@ class LoggerExtend {
 
     public function log($message, $type = TYPE_INFO, $output = OUTPUT_SCREEN) {
         $debug = core()->config->get('environment')['debug']['enabled'];
+        $time = date('d/m/y H:i:s');
+
+        /* Type error */
+        $typeString = 'undefined';
+
+        switch ($type) {
+            case TYPE_INFO: $typeString = 'info'; break;
+            case TYPE_WARNING: $typeString = 'warning'; break;
+            case TYPE_ERROR: $typeString = 'error'; break;
+            case TYPE_DEBUG: $typeString = 'debug'; break;
+        }
+
+        $message = $time.' ['.$typeString.'] '.$message."\n";
 
         if (!$type) $type = TYPE_INFO;
         if ($type == TYPE_DEBUG && !$debug) return;
