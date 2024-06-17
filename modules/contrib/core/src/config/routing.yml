@@ -1,0 +1,3 @@
+core.test:
+  path: "/test"
+  controller: "NextFramework\Core\Controller\AdminController:test"
