@@ -3,8 +3,6 @@ environment:
     - "dev.next-framework.com"
   debug:
     enabled: true
-    display_errors: "On"
-    error_reporting: "E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED"
   database:
     hostname: localhost
     database: nextframework_default
