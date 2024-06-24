@@ -14,6 +14,7 @@ class Core {
     /** @var Extend\RouterExtend $router */
     public $router = null;
 
+    /** @var Extend\DatabaseExtend $database */
     public $database = null;
 
     public function init() {
@@ -34,7 +35,7 @@ class Core {
 
             switch ($connector) {
                 case 'mysql':
-                    $this->database[$key] = new DatabaseExtend($key, $database);
+                    $this->database[$key] = new DatabaseExtend($database);
                     break;
                 default:
                     error();
