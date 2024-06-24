@@ -39,4 +39,8 @@ class ConfigExtend {
             return null;
         }
     }
+
+    public function set($key, $value) {
+        $this->values[$key] = $value;
+    }
 }

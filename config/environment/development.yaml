@@ -4,7 +4,10 @@ environment:
   debug:
     enabled: true
   database:
-    hostname: localhost
-    database: nextframework_default
-    username: root
-    password: toor
+    main:
+      hostname: localhost
+      database: nextframework_default
+      username: root
+      password: toor
+      connector: mysql
+      charset: utf8
