@@ -15,7 +15,7 @@ class Core {
     public $router = null;
 
     /** @var Extend\DatabaseExtend $database */
-    public $database = null;
+    private $database = null;
 
     public function init() {
         $this->logger = new Extend\LoggerExtend();
@@ -46,5 +46,13 @@ class Core {
         /* Remove Database Config to prevent malicious access */
         unset($config['database']);
         $this->config->set('environment', $config);
+    }
+
+    /**
+     * @param $database
+     * @return DatabaseExtend
+     */
+    function database($database) {
+        return isset($this->database[$database]) ? $this->database[$database] : null;
     }
 }

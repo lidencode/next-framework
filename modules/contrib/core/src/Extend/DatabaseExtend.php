@@ -60,4 +60,14 @@ class DatabaseExtend {
 
         return false;
     }
+
+    /**
+     * @param $repository
+     * @return RepositoryExtend
+     */
+    public function repository($repository) {
+        $repositoryObject = new RepositoryExtend($repository);
+
+        return $repositoryObject;
+    }
 }
