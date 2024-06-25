@@ -2,7 +2,7 @@
 
 namespace NextFramework\Core;
 
-use NextFramework\Core\Extend\DatabaseExtend;
+use NextFramework\Core\Connector\MySQLConnector;
 
 class Core {
     /** @var Extend\LoggerExtend $logger */
@@ -35,7 +35,7 @@ class Core {
 
             switch ($connector) {
                 case 'mysql':
-                    $this->database[$key] = new DatabaseExtend($database);
+                    $this->database[$key] = new MySQLConnector($database);
                     break;
                 default:
                     error();

@@ -1,10 +1,10 @@
 <?php
 
-namespace NextFramework\Core\Extend;
+namespace NextFramework\Core\Connector;
 
 use Symfony\Component\Yaml\Yaml;
 
-class DatabaseExtend {
+class MySQLConnector {
     private $connection = null;
 
     public function __construct($config) {

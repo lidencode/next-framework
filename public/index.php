@@ -7,7 +7,7 @@ $temp = $users->find([1]);
 pre($temp);
 
 
-// $values = core()->database['main']->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 1]);
+// $values = core()->database('main')->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 2]);
 
 // $user = new \NextFramework\Core\Entity\User();
 // pre($user);
