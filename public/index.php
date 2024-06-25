@@ -3,7 +3,7 @@
 require('../lib/bootstrap.php');
 
 
-$values = core()->database['main']->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 2]);
+$values = core()->database['main']->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 1]);
 pre($values);
 
 // $user = new \NextFramework\Core\Entity\User();

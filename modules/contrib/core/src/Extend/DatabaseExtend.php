@@ -10,18 +10,13 @@ class DatabaseExtend {
     public function __construct($config) {
         $charset = isset($config['charset']) ? $config['charset'] : 'utf8';
 
-        $connection = new \mysqli($config['hostname'], $config['username'],
-            $config['password'], $config['database']);
-
-        if ($connection->connect_error) {
-            error('MySQL ERROR: '.$connection->connect_error);
+        try {
+            $dsn = 'mysql:host='.$config['hostname'].';dbname='.$config['database'].';charset='.$charset;
+            $this->connection = new \PDO($dsn, $config['username'], $config['password']);
+            $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            error('MySQL ERROR: '.$e->getMessage());
         }
-
-        if (!$connection->set_charset($charset)) {
-            error('MySQL ERROR: '.$connection->connect_error);
-        }
-
-        $this->connection = $connection;
 
         return $this->connection;
     }
@@ -45,36 +40,22 @@ class DatabaseExtend {
             error('MySQL ERROR: Database does not exist!');
         }
 
-        if (count($params)) {
-            $paramValue = null;
-
-            foreach ($params as $key => $value) {
-                if (is_int($value)) {
-                    $paramValue = $value;
-                } elseif (is_double($value)) {
-                    $paramValue = $value;
-                } elseif (is_string($value)) {
-                    $paramValue = "'".$value."'";
-                } else {
-                    $paramValue = "'".$value."'";
-                }
-            }
-
-            $sql = str_replace(':'.$key, $paramValue, $sql);
-        }
-
         if (!$stmt = $this->connection->prepare($sql)) {
             error('MySQL ERROR: '.$this->connection->error);
+        }
+
+        if (count($params)) {
+            foreach ($params as $key => $value) {
+                $stmt->bindParam(':'.$key, $value);
+            }
         }
 
         if (!$stmt->execute()) {
             error('MySQL ERROR: '.$stmt->error);
         }
 
-        if ($result = $stmt->get_result()) {
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } else {
-            return true;
+        if ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
+            return $result;
         }
 
         return false;
