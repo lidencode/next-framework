@@ -6,8 +6,10 @@ require('../lib/bootstrap.php');
 // $temp = $users->find([1]);
 // pre($temp);
 
-$path = core()->module('core')->path();
-pre($path);
+core()->hook('init', [
+    'name' => 'Oscar',
+    'lastname' => 'Lidenbrock'
+]);
 
 // $values = core()->database('main')->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 2]);
 

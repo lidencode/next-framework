@@ -1,3 +1,5 @@
 <?php
 
-pre('Hola Test!');
+function test_init($name, $lastname) {
+    pre('Hola Test INIT!');
+}

@@ -83,4 +83,16 @@ class Core {
     function module($module) {
         return isset($this->modules[$module]) ? $this->modules[$module] : null;
     }
+
+    function hook($hook) {
+        foreach($this->modules as $key => $module) {
+            $hook_function = $key.'_'.$hook;
+            $args = func_get_args();
+            $args = isset($args[1]) ? $args[1] : [];
+
+            if(function_exists($hook_function)) {
+                call_user_func_array($hook_function, $args);
+            }
+        }
+    }
 }

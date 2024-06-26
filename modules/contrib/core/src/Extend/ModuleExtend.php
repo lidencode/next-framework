@@ -9,6 +9,8 @@ class ModuleExtend {
 
     public function __construct($path) {
         $this->path = $path;
+
+        require_once $this->path.'/module.php';
     }
 
     public function path() {
