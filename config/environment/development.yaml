@@ -11,3 +11,6 @@ environment:
       password: toor
       connector: mysql
       charset: utf8
+  modules:
+    - core
+    - test

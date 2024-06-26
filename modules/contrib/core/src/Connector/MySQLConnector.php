@@ -3,6 +3,7 @@
 namespace NextFramework\Core\Connector;
 
 use Symfony\Component\Yaml\Yaml;
+use NextFramework\Core\Extend\RepositoryExtend;
 
 class MySQLConnector {
     private $connection = null;

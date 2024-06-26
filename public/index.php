@@ -2,10 +2,12 @@
 
 require('../lib/bootstrap.php');
 
-$users = core()->database('main')->repository('user');
-$temp = $users->find([1]);
-pre($temp);
+// $users = core()->database('main')->repository('user');
+// $temp = $users->find([1]);
+// pre($temp);
 
+$path = core()->module('core')->path();
+pre($path);
 
 // $values = core()->database('main')->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 2]);
 
