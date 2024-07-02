@@ -18,6 +18,7 @@ class Core {
     private $database = null;
 
     private $modules = [];
+    private $resources = [];
 
     public function init() {
         $this->logger = new Extend\LoggerExtend();
@@ -94,5 +95,14 @@ class Core {
                 call_user_func_array($hook_function, $args);
             }
         }
+    }
+
+    public function addResource($type, $key, $resource) {
+        $this->resources[$type][$key] = $resource;
+    }
+
+    public function getResource($type, $key) {
+        return isset($this->resources[$type]) && isset($this->resources[$type][$key])
+            ? $this->resources[$type][$key] : null;
     }
 }

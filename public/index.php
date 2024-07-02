@@ -2,14 +2,11 @@
 
 require('../lib/bootstrap.php');
 
-// $users = core()->database('main')->repository('user');
-// $temp = $users->find([1]);
-// pre($temp);
+$users = core()->database('main')->repository('core.user');
+$temp = $users->find([1]);
+pre($users);
 
-core()->hook('init', [
-    'name' => 'Oscar',
-    'lastname' => 'Lidenbrock'
-]);
+// core()->hook('init', []);
 
 // $values = core()->database('main')->query("SELECT * FROM `test` WHERE `id` = :id", ['id' => 2]);
 

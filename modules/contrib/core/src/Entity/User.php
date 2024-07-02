@@ -5,14 +5,17 @@ namespace NextFramework\Core\Entity;
 use NextFramework\Core\Extend\EntityExtend;
 
 class User extends EntityExtend {
-    private function schema() {
+    static function schema() {
         return [
             'config' => [
                 'table' => 'users'
             ],
 
             'fields' => [
-                'id',
+                'id' => [
+                    'type' => 'int',
+                    'auto_increment' => true
+                ],
                 'mail' => [
                     'type' => 'email',
                     'length' => 100,
